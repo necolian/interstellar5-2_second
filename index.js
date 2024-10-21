@@ -70,7 +70,7 @@ app.get("/o/", (req, res) => {
     const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
 
     if (url && urlPattern.test(url)) {
-        res.redirect("/a/" + __uv$config.encodeUrl(url));
+        res.status(200).send("/a/" + __uv$config.encodeUrl(url));
     } else {
         res.status(400).send("無効なURLです。正しいURLを指定してください。");
     }
