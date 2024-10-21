@@ -77,7 +77,7 @@ app.get("/o/", (req, res) => {
 
     if (urlC && urlPattern.test(urlC)) {
       
-        res.status(200).send("/a/" + Ultraviolet.codec.xor.encode(urlC));
+        res.status(200).send("/a/" + Ultraviolet.codec.encode(urlC));
     } else {
         res.status(400).send("無効なURLです。正しいURLを指定してください。");
     }
