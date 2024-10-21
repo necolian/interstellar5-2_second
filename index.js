@@ -62,6 +62,20 @@ const fetchData = async (req, res, next, baseUrls) => {
     next(error)
   }
 }
+
+app.get("/o/", (req, res) => {
+    const url = req.query.url;
+    
+    // URLのバリデーションを行う正規表現
+    const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
+
+    if (url && urlPattern.test(url)) {
+        res.redirect("/a/" + __uv$config.encodeUrl(url));
+    } else {
+        res.status(400).send("無効なURLです。正しいURLを指定してください。");
+    }
+});
+
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "static", "404.html"))
 })
