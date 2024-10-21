@@ -5,7 +5,7 @@ import cors from "cors"
 import express from "express"
 import basicAuth from "express-basic-auth"
 import config from "./config.js"
-import Ultraviolet from "ultraviolet"
+import Ultraviolet from "@titaniumnetwork-dev/ultraviolet"
 const __dirname = process.cwd()
 const server = http.createServer()
 const app = express()
