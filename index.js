@@ -5,6 +5,7 @@ import cors from "cors"
 import express from "express"
 import basicAuth from "express-basic-auth"
 import config from "./config.js"
+import uv from ./static/assets/-/config.js
 const __dirname = process.cwd()
 const server = http.createServer()
 const app = express()
