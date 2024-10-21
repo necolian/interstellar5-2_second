@@ -5,7 +5,6 @@ import cors from "cors"
 import express from "express"
 import basicAuth from "express-basic-auth"
 import config from "./config.js"
-import Ultraviolet from "@titaniumnetwork-dev/ultraviolet"
 const __dirname = process.cwd()
 const server = http.createServer()
 const app = express()
@@ -63,25 +62,6 @@ const fetchData = async (req, res, next, baseUrls) => {
     next(error)
   }
 }
-
-app.get("/o/", (req, res) => {
-    const url = req.query.url;
-  
-    const urlA = url.replace("%2f","/");
-    const urlB = urlA.replace("%3a",":");
-    const urlC = urlB.replace("%2e",".");
-  
-
-    // URLのバリデーションを行う正規表現
-    const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
-
-    if (urlC && urlPattern.test(urlC)) {
-      
-        res.status(200).send("/a/" + Ultraviolet.codec.encode(urlC));
-    } else {
-        res.status(400).send("無効なURLです。正しいURLを指定してください。");
-    }
-});
 
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "static", "404.html"))
