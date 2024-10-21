@@ -65,12 +65,15 @@ const fetchData = async (req, res, next, baseUrls) => {
 
 app.get("/o/", (req, res) => {
     const url = req.query.url;
-    
+  
+    const urlreplaced = url.replace("%2F","/");
+
     // URLのバリデーションを行う正規表現
     const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
 
-    if (url && urlPattern.test(url)) {
-        res.status(200).send("/a/" + __uv$config.encodeUrl(url));
+    if (urlreplaced && urlPattern.test(urlreplaced)) {
+      
+        res.status(200).send("/a/" + __uv$config.encodeUrl(urlreplaced));
     } else {
         res.status(400).send("無効なURLです。正しいURLを指定してください。");
     }
