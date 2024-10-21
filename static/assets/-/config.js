@@ -8,3 +8,4 @@ self.__uv$config = {
     config: '/assets/-/config.js?v=5-5-2024',
     sw: '/assets/-/sw.js?v=5-5-2024',
 };
+export default uv
